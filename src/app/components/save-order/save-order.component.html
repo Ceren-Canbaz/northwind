@@ -1,0 +1,16 @@
+<table *ngIf="dataLoaded==true" class="table">
+    <thead>
+    <th>Ürün Adı</th>
+    <th>Sipariş ID </th>
+    <th></th>
+   
+   
+</thead>
+<tbody>
+    <tr  *ngFor="let product of saves"   class="table-light" >
+        <td >{{product.productName |uppercase}}</td>
+        <td>{{product.seatId}}</td>
+        <td><button (click)="deleteOrder(product)" type="button"  class="btn btn-warning">İptal Et</button></td>
+    </tr>
+<tbody>
+  

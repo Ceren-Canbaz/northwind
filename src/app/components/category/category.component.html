@@ -1,0 +1,14 @@
+
+<div style="margin-top: 26px;">
+  <ul class="list-group">
+    <a  style="text-decoration: none; color:black">  <li (click)="setAllCategory()" routerLink="/products" [class]="getAllCategoryClass()" >Tüm Ürünler</li></a>
+    
+    <a  style="text-decoration: none; color:black"> <li (click)="setCurrentCategory(category)" 
+      routerLink="/products/category/{{category.categoryId}}"
+      *ngFor="let category of categories" [class]="changeButtonType(category)">
+       {{category.categoryName}}
+      </li>
+    </a>
+  </ul>
+</div>
+

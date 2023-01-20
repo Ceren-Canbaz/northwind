@@ -1,0 +1,44 @@
+  
+  <div class="mb-3">
+    <label for="filterText" class="form-label">Search Product</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Tekli Koltuk">
+  </div>
+  <div class="alert alert-primary" *ngIf="filterText!=''">{{filterText}} için sonuçlar</div>
+
+  <div style="margin-top:50px " *ngIf="dataLoaded==false" class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <table *ngIf="dataLoaded==true" class="table">
+        <thead>
+        <th>Ürün Adı</th>
+        <th>Kategori </th>
+        <th>Fiyat</th>
+        <th>KDV'li Fiyat</th>
+        <th></th>
+        <th></th>
+       
+    </thead>
+    <tbody>
+        <tr  *ngFor="let product of products | filterPipe:filterText "   class="table-light" >
+            <td >{{product.productName |uppercase}}</td>
+            <td>{{product.categoryId}}</td>
+            <td>{{product.unitPrice}}</td>
+            <td>{{product.unitPrice |vatAdded:10 | currency }}</td>
+            <td><button (click)="addToCart(product)" type="button"  class="btn btn-success" >Favorilere Ekle</button></td>
+            <td><button type="button"  class="btn btn-warning"   routerLink="/products/productDetails/{{product.productId}}" >İncele</button></td>
+        </tr>
+        <!-- <div class="card-group">
+          <div  *ngFor="let product of products | filterPipe:filterText " style="margin: 10px;" class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{product.productName |uppercase}}</h5>
+              <p class="card-text">{{product.unitPrice | currency}} </p>
+            </div>
+          </div>
+          </div> -->
+    </tbody>
+
+</table>

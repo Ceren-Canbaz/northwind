@@ -1,0 +1,14 @@
+<div class="card mb-3">
+ 
+  
+    <iframe [src]='safeUrl' style="width:960px;height:600px"></iframe>
+
+    <div class="card-body">
+      <h5 class="card-title">{{products.productName}}</h5>
+      <p class="card-text">{{products.infoDetail}}</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      <button (click)="deleteProduct()" type="button"  class="btn btn-error" routerLink="" >Sil</button>
+      <button (click)="add()" type="button"  class="btn btn-success" routerLink="" >Onayla</button>
+
+    </div>
+  </div>
